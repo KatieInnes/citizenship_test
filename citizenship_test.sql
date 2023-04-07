@@ -33,7 +33,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `citizenship_test`.`test_results` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `score` VARCHAR(45) NULL,
+  `score` TINYINT NULL,
   `test_date` DATE NULL,
   `user_id` INT NOT NULL,
   PRIMARY KEY (`id`),
@@ -47,11 +47,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `citizenship_test`.`advice`
+-- Table `citizenship_test`.`tips`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `citizenship_test`.`advice` (
+CREATE TABLE IF NOT EXISTS `citizenship_test`.`tips` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `advice` TINYTEXT NULL,
+  `tip` TINYTEXT NULL,
   `created_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` DATETIME NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `user_id` INT NOT NULL,
@@ -71,7 +71,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `citizenship_test`.`questions_answers` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `question` TINYTEXT NULL,
-  `answer_type` VARCHAR(45) NULL,
   `answer1` TINYTEXT NULL,
   `answer2` TINYTEXT NULL,
   `answer3` TINYTEXT NULL,

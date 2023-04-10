@@ -17,12 +17,10 @@
     </div>
 
     <div class="advice">
-        {% for one_tip in tips %}
-            <p>{{ tip }}</p>
-        {% endfor %}
+        {{tips.tip}}
     </div>
 
-    <a href="/testquestion/{{ question.id }}">Take a test</a>
+    {# <a href="/testquestion/{{ question.id }}">Take a test</a> #}
     
 </body>
 </html>

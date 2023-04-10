@@ -1,6 +1,7 @@
 from flask import render_template, flash, redirect, request, session 
 from flask_app import app
 from flask_app.models.user import User
+from flask_app.models.tip import Tip
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
 
@@ -35,6 +36,26 @@ def login():
         return redirect ('/')
     session["id"] = user_in_database.id
     return redirect('/welcomeback')
+
+@app.route('/welcome')
+def welcome():
+    if "id" not in session:
+        return redirect('/logout')
+    # data = {
+    #     "id": session["id"]
+    # }
+    return render_template("welcome.html", user = User.search_by_id({"id": session["id"]}), tips = Tip.get_one_random_tip())
+
+
+@app.route('/welcomeback')
+def welcomeback():
+    if "id" not in session:
+        return redirect('/logout')
+    # data = {
+    #     "id": session["id"]
+    # }
+    return render_template("welcomeback.html", user = User.search_by_id({"id": session["id"]}))
+
 
 
 @app.route('/logout')

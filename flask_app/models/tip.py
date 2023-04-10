@@ -40,14 +40,14 @@ class Tip:
         return cls(one_tip[0])
 
     @classmethod
-    def get_one_random_tip(cls, data):
+    def get_one_random_tip(cls):
         query = """
             SELECT * FROM
                 tips
             ORDER BY RAND() LIMIT 1
         """
-        one_random_tip = connectToMySQL(cls.Db).query_db(query)
-        return cls(one_random_tip)
+        one_random_tip = connectToMySQL(cls.DB).query_db(query)
+        return one_random_tip[0]
 
     @classmethod
     def save(cls, data):

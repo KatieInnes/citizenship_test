@@ -78,13 +78,3 @@ class User:
         if not result:
             return False
         return cls(result[0])
-
-    # @classmethod
-    # def users_shows(cls, data):
-    #     query = """
-    #     SELECT * FROM 
-    #         users
-    #     LEFT JOIN sightings
-    #     ON users.id = sightings.user_id
-    #     WHERE users.id = %(id)s
-    #     """

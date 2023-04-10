@@ -6,14 +6,14 @@ class Tip:
     DB = "citizenship_test"
     def __init__(self, data):
         self.id = data['id']
-        self.advice = data['advice']
-        self.user = data['user_id']
+        self.tip = data['tip']
+        self.user_id = data['user_id']
 
     @staticmethod
     def validate_tip(tip):
         is_valid = True
 
-        if len(tip['advice']) < 5:
+        if len(tip['tip']) < 5:
             flash("Advice must be at least 5 characters.")
             is_valid = False
 
@@ -21,7 +21,7 @@ class Tip:
 
     @classmethod
     def get_all_tips(cls, data):
-        query = "SELECT * FROM advice"
+        query = "SELECT * FROM tips"
         results = connectToMySQL(cls.DB).query.db(query)
 
         tips = []
@@ -33,11 +33,54 @@ class Tip:
     def get_one_tip_by_id(cls, id):
         query = """
             SELECT * FROM 
-                advice 
+                tips 
             WHERE id = %(id)s
         """
         one_tip = connectToMySQL(cls.DB).query_db(query, {"id":id})
         return cls(one_tip[0])
+
+    @classmethod
+    def get_one_random_tip(cls, data):
+        query = """
+            SELECT * FROM
+                tips
+            ORDER BY RAND() LIMIT 1
+        """
+        one_random_tip = connectToMySQL(cls.Db).query_db(query)
+        return cls(one_random_tip)
+
+    @classmethod
+    def save(cls, data):
+        query = """
+            INSERT INTO 
+                tips 
+                (tip, user_id) 
+            VALUES
+                (%(tip)s, %(user_id)s)
+            """
+        return connectToMySQL(cls.DB).query_db(query, data)
+
+    @classmethod
+    def update(data):
+        query = """
+            UPDATE tips 
+            SET %(tip)s
+            WHERE id = %(user_id)s;
+        """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return results
+
+
+    @classmethod
+    def delete(cls, id):
+        query  = """
+            DELETE FROM 
+            tips 
+            WHERE id = %(id)s;
+        """
+        results = connectToMySQL(cls.DB).query_db(query, {"id":id})
+        return results
+
 
     # @classmethod
     # def get_one_tip_by_id(cls, data):
@@ -49,14 +92,3 @@ class Tip:
     #     """
     #     result = connectToMySQL(cls.DB).query_db(query, data)
     #     return cls(result[0])
-
-    @classmethod
-    def save(cls, data):
-        query = """
-        INSERT INTO 
-            advice 
-            (advice, user_id) 
-        VALUES
-            (%(advice)s, %(user_id)s)
-        """
-        return connectToMySQL(cls.DB).query_db(query, data)

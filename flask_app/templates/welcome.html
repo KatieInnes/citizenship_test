@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="header">
+        <h1>US Citizenship Test Study Center</h1>
+        <a href="/logout">Logout</a>
+    </div>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <div class="explainer">
+        <p>As you know, part of the naturalization process in the United States is a civics (history and government) test. Just as in the real test, here you will receive 10 questions from a list of the 100 official test questions. You will need to answer 6 out of 10 questions correctly to pass the civics portion of the naturalization test. On the naturalization test, some answers may change because of elections or appointments. As you study for the test, make sure that you know the most current answers to these questions. Answer these questions with the name of the official who is serving at the time of your eligibility interview with USCIS. The USCIS Officer will not accept an incorrect answer.</p>
+    </div>
+
+    <div class="advice">
+        {% for one_tip in tips %}
+            <p>{{ tip }}</p>
+        {% endfor %}
+    </div>
+
+    <a href="/testquestion/{{ question.id }}">Take a test</a>
+    
+</body>
+</html>

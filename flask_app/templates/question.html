@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+</head>
+<body>
+    <div class="header">
+        <h1>US Citizenship Test Study Center</h1>
+        <a href="/logout">Logout</a>
+    </div>
+    
+    <div class="test">
+        {% for question in questions %}
+            {{ question.question }}
+            {{ question.answer1 }}
+            {{ question.answer2 }}
+            {{ question.answer3 }}
+            {{ question.answer4 }}
+            hidden {{ question.correct_answer }}
+            <hr>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

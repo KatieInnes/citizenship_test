@@ -24,5 +24,31 @@
         {% endfor %}
     </div>
 
+
+    <div class="test">
+        <form action="question/{question_number_page}/submit" method="POST">
+            {{ question.question }}<br>
+
+            {{ question.answer1 }}
+            <input name="answer" type="radio" value={question.answer1  === question.correct_answer ? 'true' : 'false'} />
+
+
+            {{ question.answer2 }}
+            <input name="answer" type="radio" value={question.answer2  === question.correct_answer ? 'true' : 'false'} />
+
+
+            {{ question.answer3 }}
+            <input name="answer" type="radio" value={question.answer3  === question.correct_answer ? 'true' : 'false'} />
+
+
+            {{ question.answer4 }}
+            <input name="answer" type="radio" value={question.answer4  === question.correct_answer ? 'true' : 'false'} />
+
+            <submit>Answer</submit>
+        </form>
+    </div>
+
+
+
 </body>
 </html>

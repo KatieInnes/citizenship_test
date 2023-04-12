@@ -20,24 +20,51 @@ class Tip:
         return is_valid
 
     @classmethod
-    def get_all_tips(cls, data):
-        query = "SELECT * FROM tips"
-        results = connectToMySQL(cls.DB).query.db(query)
-
-        tips = []
-        for item in results:
-            tips.append(cls(item))
-        return tips
-
-    @classmethod
-    def get_one_tip_by_id(cls, id):
+    def get_all_tips(cls):
         query = """
             SELECT * FROM 
                 tips 
-            WHERE id = %(id)s
+            JOIN users on tips.user_id = users.id
         """
-        one_tip = connectToMySQL(cls.DB).query_db(query, {"id":id})
-        return cls(one_tip[0])
+        results = connectToMySQL(cls.DB).query_db(query)
+        tips = []
+        for tip in results:
+            this_tip = cls(tip)
+            user_data = {
+                    "id": tip['users.id'],
+                    "username": tip['username'],
+                    "email": tip['email'],
+                    "password": "",
+                    "created_at": tip['users.created_at'],
+                    "updated_at": tip['users.updated_at']
+            }
+            this_tip.test_taker = user.User(user_data)
+            tips.append(this_tip)
+        return tips
+
+    @classmethod
+    def get_one_tip_by_id(cls, data):
+        query = """
+            SELECT * FROM 
+                tips 
+            JOIN users on tips.user_id = users.id
+            WHERE tips.id = %(id)s
+        """
+        result = connectToMySQL(cls.DB).query_db(query, data)
+
+        tip = result[0]
+        this_tip = cls(tip)
+        user_data = {
+                "id": tip['users.id'],
+                "first_name": tip['first_name'],
+                "last_name": tip['last_name'],
+                "email": tip['email'],
+                "password": "",
+                "created_at": tip['users.created_at'],
+                "updated_at": tip['users.updated_at']
+        }
+        this_tip.test_taker = user.User(user_data)
+        return this_tip
 
     @classmethod
     def get_one_random_tip(cls):
@@ -50,7 +77,7 @@ class Tip:
         return one_random_tip[0]
 
     @classmethod
-    def save(cls, data):
+    def save_tip(cls, data):
         query = """
             INSERT INTO 
                 tips 
@@ -61,7 +88,7 @@ class Tip:
         return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
-    def update(data):
+    def update_tip(cls, data):
         query = """
             UPDATE tips 
             SET %(tip)s
@@ -72,7 +99,7 @@ class Tip:
 
 
     @classmethod
-    def delete(cls, id):
+    def delete_tip(cls, id):
         query  = """
             DELETE FROM 
             tips 
@@ -92,3 +119,24 @@ class Tip:
     #     """
     #     result = connectToMySQL(cls.DB).query_db(query, data)
     #     return cls(result[0])
+
+
+    # @classmethod
+    # def get_all_tips(cls, data):
+    #     query = "SELECT * FROM tips"
+    #     results = connectToMySQL(cls.DB).query.db(query)
+
+    #     tips = []
+    #     for tip in results:
+    #         tips.append(cls(tip))
+    #     return tips
+
+    # @classmethod
+    # def get_one_tip_by_id(cls, id):
+    #     query = """
+    #         SELECT * FROM 
+    #             tips 
+    #         WHERE id = %(id)s
+    #     """
+    #     one_tip = connectToMySQL(cls.DB).query_db(query, {"id":id})
+    #     return cls(one_tip[0])

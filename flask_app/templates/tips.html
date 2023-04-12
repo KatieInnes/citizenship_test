@@ -9,7 +9,7 @@
 <body>
     <h1>Citizenship Test Advice</h1>
     <h2>{{ user.username }}</h2>
-    <a href="/tips/new">Add a new tip</a>
+    <a href="/advice/new">Add a new tip</a>
 
     <p>Reported tips:</p>
     <table>
@@ -25,9 +25,9 @@
                 <tr>
                     <td>{{ one_tip.tip }}</td>
                     <td>{{ one_tip.test_taker.username }}</td>
-                    <td><a href="/tips/{{ one_tip.id }}">View</a>
-                        {% if one_tip.user == session['id'] %} | <a href="/tips/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
-                        {% if one_tip.user == session['id'] %} <a href="/tips/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
+                    <td><a href="/advice/{{ one_tip.id }}">View</a>
+                        {% if one_tip.user == session['id'] %} | <a href="/advice/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
+                        {% if one_tip.user == session['id'] %} <a href="/advice/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>

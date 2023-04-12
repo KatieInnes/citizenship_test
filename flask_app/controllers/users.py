@@ -36,7 +36,7 @@ def login():
         flash("Invalid email/password")
         return redirect ('/')
     session["id"] = user_in_database.id
-    return redirect('/welcomeback')
+    return redirect('/welcome_back')
 
 @app.route('/welcome')
 def welcome():
@@ -46,12 +46,12 @@ def welcome():
     return render_template("welcome.html", user = User.search_by_id({"id": session["id"]}), tips = Tip.get_one_random_tip())
 
 
-@app.route('/welcomeback')
+@app.route('/welcome_back')
 def welcomeback():
     if "id" not in session:
         return redirect('/logout')
 
-    return render_template("welcomeback.html", user = User.search_by_id({"id": session["id"]}), test_results = Test_Result.get_all_scores())
+    return render_template("welcomeback.html", user = User.search_by_id({"id": session["id"]}), test_results = Test_Result.get_scores_for_logged_in_user({"id": session["id"]}))
 
 
 

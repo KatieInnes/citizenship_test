@@ -43,6 +43,18 @@ class Tip:
         return tips
 
     @classmethod
+    def save_new_tip(cls, data):
+        query = """
+            INSERT INTO 
+                tips 
+                (tip, user_id) 
+            VALUES
+                (%(tip)s, %(user_id)s)
+            """
+        return connectToMySQL(cls.DB).query_db(query, data)
+
+
+    @classmethod
     def get_one_tip_by_id(cls, data):
         query = """
             SELECT * FROM 
@@ -55,14 +67,13 @@ class Tip:
         tip = result[0]
         this_tip = cls(tip)
         user_data = {
-                "id": tip['users.id'],
-                "first_name": tip['first_name'],
-                "last_name": tip['last_name'],
-                "email": tip['email'],
-                "password": "",
-                "created_at": tip['users.created_at'],
-                "updated_at": tip['users.updated_at']
-        }
+                    "id": tip['users.id'],
+                    "username": tip['username'],
+                    "email": tip['email'],
+                    "password": "",
+                    "created_at": tip['users.created_at'],
+                    "updated_at": tip['users.updated_at']
+            }
         this_tip.test_taker = user.User(user_data)
         return this_tip
 
@@ -75,17 +86,6 @@ class Tip:
         """
         one_random_tip = connectToMySQL(cls.DB).query_db(query)
         return one_random_tip[0]
-
-    @classmethod
-    def save_tip(cls, data):
-        query = """
-            INSERT INTO 
-                tips 
-                (tip, user_id) 
-            VALUES
-                (%(tip)s, %(user_id)s)
-            """
-        return connectToMySQL(cls.DB).query_db(query, data)
 
     @classmethod
     def update_tip(cls, data):

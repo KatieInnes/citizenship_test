@@ -19,3 +19,13 @@ class Test_Result:
         for score in results:
             scores.append(score)
         return scores
+
+    @classmethod
+    def get_scores_for_logged_in_user(cls, data):
+        query = """
+            SELECT * FROM 
+                test_results
+            WHERE user_id = %(id)s
+        """
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        return result

@@ -4,6 +4,7 @@ import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') 
 
 class User:
+    DB = "citizenship_test"
     def __init__(self , data):
         self.id = data['id']
         self.username = data['username']
@@ -52,7 +53,7 @@ class User:
         VALUES
             (%(username)s, %(email)s, %(password)s)
         """
-        return connectToMySQL("citizenship_test").query_db( query, data ) 
+        return connectToMySQL(cls.DB).query_db( query, data ) 
 
     @classmethod
     def search_by_id(cls, data):
@@ -62,7 +63,7 @@ class User:
         WHERE 
             id = %(id)s;
         """
-        result = connectToMySQL("citizenship_test").query_db(query, data)
+        result = connectToMySQL(cls.DB).query_db(query, data)
         if result == False:
             return False
         return cls(result[0])
@@ -74,7 +75,7 @@ class User:
             users 
         WHERE email = %(email)s
         """
-        result = connectToMySQL("citizenship_test").query_db(query, data)
+        result = connectToMySQL(cls.DB).query_db(query, data)
         if not result:
             return False
         return cls(result[0])

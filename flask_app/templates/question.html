@@ -12,7 +12,7 @@
         <a href="/logout">Logout</a>
     </div>
     
-    <div class="test">
+    {# <div class="test">
         {% for question in questions %}
             {{ question.question }}
             {{ question.answer1 }}
@@ -22,27 +22,27 @@
             hidden {{ question.correct_answer }}
             <hr>
         {% endfor %}
-    </div>
+    </div> #}
 
 
     <div class="test">
-        <form action="question/{question_number_page}/submit" method="POST">
+        <form action="question/{page_id}" method="POST">
             {{ question.question }}<br>
 
             {{ question.answer1 }}
-            <input name="answer" type="radio" value={question.answer1  === question.correct_answer ? 'true' : 'false'} />
+            <input name="answer" type="radio" value={question.answer1  == question.correct_answer ? 'true' : 'false'} />
 
 
             {{ question.answer2 }}
-            <input name="answer" type="radio" value={question.answer2  === question.correct_answer ? 'true' : 'false'} />
+            <input name="answer" type="radio" value={question.answer2  == question.correct_answer ? 'true' : 'false'} />
 
 
             {{ question.answer3 }}
-            <input name="answer" type="radio" value={question.answer3  === question.correct_answer ? 'true' : 'false'} />
+            <input name="answer" type="radio" value={question.answer3  == question.correct_answer ? 'true' : 'false'} />
 
 
             {{ question.answer4 }}
-            <input name="answer" type="radio" value={question.answer4  === question.correct_answer ? 'true' : 'false'} />
+            <input name="answer" type="radio" value={question.answer4  == question.correct_answer ? 'true' : 'false'} />
 
             <submit>Answer</submit>
         </form>

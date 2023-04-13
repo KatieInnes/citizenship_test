@@ -90,23 +90,24 @@ class Tip:
     @classmethod
     def update_tip(cls, data):
         query = """
-            UPDATE tips 
-            SET %(tip)s
-            WHERE id = %(user_id)s;
+        UPDATE
+            tips SET
+            tip=%(tip)s
+        WHERE id = %(id)s
         """
-        results = connectToMySQL(cls.DB).query_db(query, data)
-        return results
+        return connectToMySQL(cls.DB).query_db(query, data)
 
 
     @classmethod
-    def delete_tip(cls, id):
+    def delete_tip(cls, data):
+
         query  = """
             DELETE FROM 
             tips 
-            WHERE id = %(id)s;
+            WHERE id = %(id)s
         """
-        results = connectToMySQL(cls.DB).query_db(query, {"id":id})
-        return results
+        return connectToMySQL(cls.DB).query_db(query, data)
+        
 
 
     # @classmethod

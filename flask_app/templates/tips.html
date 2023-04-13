@@ -21,13 +21,13 @@
             </tr>
         </thead>
         <tbody>
-            {% for one_tip in tips %}
+            {% for one_tip in advice %}
                 <tr>
                     <td>{{ one_tip.tip }}</td>
                     <td>{{ one_tip.test_taker.username }}</td>
-                    <td><a href="/advice/{{ one_tip.id }}">View</a>
-                        {% if one_tip.user == session['id'] %} | <a href="/advice/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
-                        {% if one_tip.user == session['id'] %} <a href="/advice/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
+                    <td>
+                        {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
+                        {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
                 </tr>
             {% endfor %}
         </tbody>

@@ -5,7 +5,7 @@ from flask_app.models.tip import Tip
 
 
 @app.route('/advice_center')
-def all_tips():
+def all_tips(): 
     if "id" not in session:
         return redirect('/logout')
 
@@ -43,7 +43,7 @@ def view_tip(id):
     data = {
         "id": id
     }
-    return render_template("view_tip.html", tip=Tip.view_tip(data), logged_in_user = User.search_by_id({"id": session["id"]}))
+    return render_template("view_tip.html", tip=Tip.get_one_tip_by_id(data), logged_in_user = User.search_by_id({"id": session["id"]}))
 
 
 @app.route('/advice/<int:id>/edit')
@@ -56,10 +56,10 @@ def edit_tip(id):
         "id": id
     }
 
-    tip = Tip.view_tip(data)
+    tip = Tip.get_one_tip_by_id(data)
 
-    if tip and tip.user == int(session["id"]):
-        return render_template("edit_tip.html", tip=Tip.view_tip(data)) 
+    if tip and tip.user_id == int(session["id"]):
+        return render_template("edit_tip.html", tip=Tip.get_one_tip_by_id(data)) 
 
     return redirect("/advice_center")
 
@@ -73,11 +73,12 @@ def update_tip(id):
         "id": request.form["id"],
         "tip": request.form["tip"]
         }
-    Tip.edit_tip(data)
+
+    Tip.update_tip(data)
     return redirect('/advice_center')
 
 
-@app.route('/advice/<int:tip_id>/delete')
+@app.route('/advice/<int:id>/delete')
 def delete_tip(id):
 
     if "id" not in session:
@@ -87,9 +88,9 @@ def delete_tip(id):
         "id": id
     }
 
-    tip = Tip.view_tip(id)
+    tip = Tip.get_one_tip_by_id(data)
 
-    if tip and tip.user == int(session["id"]):
+    if tip and tip.user_id == int(session["id"]):
         Tip.delete_tip(data)
 
     return redirect('/advice_center')

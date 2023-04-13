@@ -11,7 +11,7 @@ class Test_Result:
         self.user_id = data['user_id']
 
     @classmethod
-    def get_all_scores(cls):
+    def get_all_scores(cls): 
         query = "SELECT * FROM test_results"
         results = connectToMySQL(cls.DB).query_db(query)
 

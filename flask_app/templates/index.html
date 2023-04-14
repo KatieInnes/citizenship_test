@@ -4,14 +4,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+    <link rel="stylesheet" type="text/css" href={{ url_for ("static", filename = "foundation.min.css") }}>
+    <link rel="stylesheet" type="text/css" href={{ url_for ("static", filename = "style.css") }}>
     <title>US Citizenship Test Study Center</title>
 </head>
 <body>
+    <header id="header" class="topbar-sticky-shrink-header"></header>
+
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><a href="#">Thing 1</a></li>
+                        <li><a href="#">Thing 2</a></li>
+                        <li><a href="#">Thing 3</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     {% extends "flash_set_up.html" %}
     {% block body %}
     <div>
-        <div>
+        <div class="grid-x">
             <h2>Register</h2>
             <form action="/registration" method="POST">
                 <div>
@@ -31,12 +52,12 @@
                     <input type="password" name="password_confirm">
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary">Register</button>
+                    <button type="submit" class="button">Register</button>
                 </div>
             </form> 
         </div>
         <div>
-            <div>
+            <div class="grid-x">
                 <h2>Login</h2>
                 <form action="/login" method="POST">
                     <div>
@@ -48,7 +69,7 @@
                         <input type="password" name="password">
                     </div>
                     <div>
-                        <button type="submit">Login</button>
+                        <button type="submit" class="button">Login</button>
                     </div>
                 </form>
             </div>

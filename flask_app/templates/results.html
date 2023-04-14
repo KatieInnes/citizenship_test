@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Test</title>
+</head>
+<body>
+    <div class="header">
+        <h1>US Citizenship Test Study Center</h1>
+        <a href="/logout">Logout</a>
+    </div>
+
+    <div>
+        {{"You passed the test!" if test_result.score >= 6 else "Try again!"}}
+        <h3>Your correctly answered {{test_result.score}} questions out of 10.</h3>
+    </div>
+
+    <a href="/question/0">Take another test</a>
+    <a href="/advice/new">Leave advice for other test-takers.</a>
+
+</body>
+</html>

@@ -1,4 +1,3 @@
-from flask import flash
 from flask_app.models import user
 from flask_app.config.mysqlconnection import connectToMySQL
 
@@ -29,3 +28,27 @@ class Test_Result:
         """
         result = connectToMySQL(cls.DB).query_db(query, data)
         return result
+
+    @classmethod
+    def most_recent_score_for_logged_in_user(cls, data):
+        query = """
+            SELECT score FROM 
+                test_results
+            WHERE user_id = %(id)s
+            ORDER BY test_date DESC
+            LIMIT 1
+        """
+        result = connectToMySQL(cls.DB).query_db(query, data)
+        return result
+
+
+    @classmethod
+    def save_new_score(cls, data):
+        query = """
+            INSERT INTO
+                test_results
+                (score, user_id)
+            VALUES 
+                (%(score)s, %(user_id)s)
+        """
+        return connectToMySQL(cls.DB).query_db(query, data)

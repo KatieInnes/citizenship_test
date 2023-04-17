@@ -9,7 +9,7 @@
     <title>US Citizenship Test Study Center</title>
 </head>
 <body>
-    <header id="header" class="topbar-sticky-shrink-header"></header>
+    {# <header id="header" class="topbar-sticky-shrink-header"></header> #}
 
     <div data-sticky-container>
         <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
@@ -19,9 +19,9 @@
                 </div>
                 <div class="top-bar-right">
                     <ul class="menu">
-                        <li><a href="#">Thing 1</a></li>
-                        <li><a href="#">Thing 2</a></li>
-                        <li><a href="#">Thing 3</a></li>
+                        <li></li>
+                        <li></li>
+                        <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -31,8 +31,8 @@
 
     {% extends "flash_set_up.html" %}
     {% block body %}
-    <div>
-        <div class="grid-x">
+    <div class="row">
+        <div class="column-left">
             <h2>Register</h2>
             <form action="/registration" method="POST">
                 <div>
@@ -56,22 +56,23 @@
                 </div>
             </form> 
         </div>
-        <div>
-            <div class="grid-x">
-                <h2>Login</h2>
-                <form action="/login" method="POST">
-                    <div>
-                        <label for="email">Email:</label>
-                        <input type="text" name="email">
-                    </div>
-                    <div>
-                        <label for="password">Password:</label>
-                        <input type="password" name="password">
-                    </div>
-                    <div>
-                        <button type="submit" class="button">Login</button>
-                    </div>
-                </form>
+    
+
+        <div class="column-right">
+            <h2>Login</h2>
+            <form action="/login" method="POST">
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="text" name="email">
+                </div>
+                <div>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password">
+                </div>
+                <div>
+                    <button type="submit" class="button">Login</button>
+                </div>
+            </form>
             </div>
         </div>
     </div>

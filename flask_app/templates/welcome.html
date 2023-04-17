@@ -9,20 +9,33 @@
     <title>Welcome</title>
 </head>
 <body>
-    <div class="header">
-        <h1>US Citizenship Test Study Center</h1>
-        <a href="/logout">Logout</a>
-    </div>
-    <h2>Welcome, {{ user.username }}!</h2>
-    <div class="explainer">
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li></li>
+                        <li></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <div class="welcome">
+    <h3>Welcome, {{ user.username }}!</h3>
+    <div class="callout primary">
         <p>As you know, part of the naturalization process in the United States is a civics (history and government) test. Just as in the real test, here you will receive 10 questions from a list of the 100 official test questions. You will need to answer 6 out of 10 questions correctly to pass the civics portion of the naturalization test. On the naturalization test, some answers may change because of elections or appointments. As you study for the test, make sure that you know the most current answers to these questions. Answer these questions with the name of the official who is serving at the time of your eligibility interview with USCIS. The USCIS Officer will not accept an incorrect answer.</p>
     </div>
 
-    <div class="advice">
-        {{tips.tip}}
+    <div class="callout secondary">
+        <p>Other users have left some tips in our Advice Center. Here's one that might help before you take your first test:</p>
+        <a href="/advice_center">{{tips.tip}}</a>
     </div>
     
-    <a href="/question/0">Take a test</a>
-    
+    <a class="button" href="/question/0">Take a test</a>
+    </div>
 </body>
 </html>

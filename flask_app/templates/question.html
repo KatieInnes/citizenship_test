@@ -9,29 +9,42 @@
     <title>The Test</title>
 </head>
 <body>
-    <div class="header">
-        <h1>US Citizenship Test Study Center</h1>
-        <a href="/logout">Logout</a>
-    </div>
 
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li></li>
+                        <li></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     <div class="test">
-        <form action="/question/{{question_number_page}}" method="POST">
-            {{ question.question }}<br>
-
-            {{ question.answer1 }}
-            <input name="answer" type="radio" value={{"true" if question.answer1  == question.correct_answer else "false"}} />
-
-            {{ question.answer2 }}
-            <input name="answer" type="radio" value={{"true" if question.answer2  == question.correct_answer else "false"}} />
-
-            {{ question.answer3 }}
-            <input name="answer" type="radio" value={{"true" if question.answer3  == question.correct_answer else "false"}} />
-
-            {{ question.answer4 }}
-            <input name="answer" type="radio" value={{"true" if question.answer4  == question.correct_answer else "false"}} />
-
-            <button type="submit">Submit Answer</button>
-        </form>
+        <div class="callout">
+            <form action="/question/{{question_number_page}}" method="POST">
+                <h5>{{ question.question }}</h5>
+                <hr>
+                {{ question.answer1 }}
+                <input name="answer" type="radio" value={{"true" if question.answer1  == question.correct_answer else "false"}} />
+                <br>
+                {{ question.answer2 }}
+                <input name="answer" type="radio" value={{"true" if question.answer2  == question.correct_answer else "false"}} />
+                <br>
+                {{ question.answer3 }}
+                <input name="answer" type="radio" value={{"true" if question.answer3  == question.correct_answer else "false"}} />
+                <br>
+                {{ question.answer4 }}
+                <input name="answer" type="radio" value={{"true" if question.answer4  == question.correct_answer else "false"}} />
+                <br>
+                <button class="button" type="submit">Submit Answer</button>
+            </form>
+        </div>
     </div>
 
 

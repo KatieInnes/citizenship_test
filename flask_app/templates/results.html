@@ -9,18 +9,37 @@
     <title>The Test</title>
 </head>
 <body>
-    <div class="header">
-        <h1>US Citizenship Test Study Center</h1>
-        <a href="/logout">Logout</a>
-    </div>
+
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li></li>
+                        <li></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
 
     <div>
-        {{"You passed the test!" if test_result.score >= 6 else "Try again!"}}
-        <h3>Your correctly answered {{test_result.score}} questions out of 10.</h3>
+        <div class="callout">
+            {{"You passed the test!" if test_result.score >= 6 else "Try again!"}}<br>
+            Your correctly answered {{test_result.score}} questions out of 10.
+            <hr>
+            <a href="/question/0">Take another test</a><br>
+            <a href="/advice/new">Leave advice for other test-takers.</a>
+        </div>
+        
+        
     </div>
 
-    <a href="/question/0">Take another test</a>
-    <a href="/advice/new">Leave advice for other test-takers.</a>
 
 </body>
 </html>

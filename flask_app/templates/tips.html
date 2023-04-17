@@ -9,32 +9,50 @@
     <title>Tips</title>
 </head>
 <body>
-    <h1>Citizenship Test Advice</h1>
-    <h2>{{ user.username }}</h2>
-    <a href="/advice/new">Add a new tip</a>
-    <a href="/question/0">Take another test</a>
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><a href="/advice/new">Add a new tip</a></li>
+                        <li><a href="/question/0">Take another test</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
 
-    <p>Reported tips:</p>
-    <table>
-        <thead>
-            <tr>
-                <th>Tip</th>
-                <th>Reported By</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for one_tip in advice %}
+
+    <div class="callout">
+        <p>The more you practice, <b>{{ user.username }}</b>, the more you'll understand the test. If you have any advice to share for your fellow test-takers, please <a href="/advice/new">add a tip</a>.</p>
+
+        <hr>
+
+        <h3>User-Reported Advice:</h3>
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ one_tip.tip }}</td>
-                    <td>{{ one_tip.test_taker.username }}</td>
-                    <td>
-                        {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
-                        {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
+                    <th>Tip</th>
+                    <th>Reported By</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    <a href="/logout">Logout</a>
+            </thead>
+            <tbody>
+                {% for one_tip in advice %}
+                    <tr>
+                        <td>{{ one_tip.tip }}</td>
+                        <td>{{ one_tip.test_taker.username }}</td>
+                        <td>
+                            {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/edit">Edit</a> | {% endif %} 
+                            {% if one_tip.user_id == session['id'] %} <a href="/advice/{{ one_tip.id }}/delete">Delete</a> {% endif %}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
 </body>
 </html>

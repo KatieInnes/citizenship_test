@@ -4,8 +4,8 @@
 }
 
 body {
-    background-color: lightgray;
-    /* background-size: cover; */
+    background-color: #dfdfdf;
+    background-image:  url('/static/background.svg');
 }
 
 .top-bar-title{
@@ -21,9 +21,10 @@ body {
     padding: 2rem;
 }
 
-.test {
-    margin: 20px, 100px, 0px, 100px;
+.callout{
+    padding: 2rem;
 }
+
 
 .column-left .column-right {
     flex: 2;
@@ -62,21 +63,3 @@ body {
   } */
   
   
-
-/* .translucent-form-overlay {
-    margin-top: 50px;
-    max-width: 500px;
-    width: 100%;
-    background-color: rgba(54, 54, 54, 0.8);
-    padding: 20px;
-    color: #fefefe;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
-
-.radio-background{
-    background-color: white;
-    padding-left: 10px;
-    padding-top: 10px;
-}

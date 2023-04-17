@@ -25,27 +25,27 @@
                 </div>
             </div>
         </div>
-    <div class="test">
-        <div class="callout">
-            <form action="/question/{{question_number_page}}" method="POST">
-                <h5>{{ question.question }}</h5>
-                <hr>
-                {{ question.answer1 }}
-                <input name="answer" type="radio" value={{"true" if question.answer1  == question.correct_answer else "false"}} />
-                <br>
-                {{ question.answer2 }}
-                <input name="answer" type="radio" value={{"true" if question.answer2  == question.correct_answer else "false"}} />
-                <br>
-                {{ question.answer3 }}
-                <input name="answer" type="radio" value={{"true" if question.answer3  == question.correct_answer else "false"}} />
-                <br>
-                {{ question.answer4 }}
-                <input name="answer" type="radio" value={{"true" if question.answer4  == question.correct_answer else "false"}} />
-                <br>
-                <button class="button" type="submit">Submit Answer</button>
-            </form>
-        </div>
+
+    <div class="callout">
+        <form action="/question/{{question_number_page}}" method="POST">
+            <h5>{{ question.question }}</h5>
+            <hr>
+            {{ question.answer1 }}
+            <input name="answer" type="radio" value={{"true" if question.answer1  == question.correct_answer else "false"}} />
+            <br>
+            {{ question.answer2 }}
+            <input name="answer" type="radio" value={{"true" if question.answer2  == question.correct_answer else "false"}} />
+            <br>
+            {{ question.answer3 }}
+            <input name="answer" type="radio" value={{"true" if question.answer3  == question.correct_answer else "false"}} />
+            <br>
+            {{ question.answer4 }}
+            <input name="answer" type="radio" value={{"true" if question.answer4  == question.correct_answer else "false"}} />
+            <br>
+            <button class="button" type="submit">Submit Answer</button>
+        </form>
     </div>
+
 
 
 

@@ -18,21 +18,22 @@
                     </div>
                     <div class="top-bar-right">
                         <ul class="menu">
-                            <li><a href="/advice/new">Add a new tip</a></li>
                             <li><a href="/question/0">Take another test</a></li>
+                            <li><a href="/advice/new">Add a new tip</a></li>
                             <li><a href="/logout">Logout</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-    <h2>Welcome back, {{ user.username }}!</h2>
     
-    <div class="scores">
-        <h3>Your previous scores</h3>
+    
+    <div class="callout">
+        <h3>Welcome back, {{ user.username }}!</h3>
+        <br>
         <table>
             <thead>
                 <tr>
-                    <th>Score</th>
+                    <th>Your Previous Test Scores</th>
                     <th>Date</th>
                 </tr>
             </thead>
@@ -40,15 +41,12 @@
                 {% for result in test_results %}
                 <tr>
                     <td>{{ result.score }} / 10</td>
-                    <td>{{ result.test_date }}</td>
+                    <td>{{ result.test_date.strftime('%B %d, %Y') }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-
     </div>
 
-    <a href="/question/0">Take another test</a>
-    
 </body>
 </html>

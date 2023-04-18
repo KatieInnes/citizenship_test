@@ -10,5 +10,4 @@ def results():
         return redirect('/logout/')
 
 
-    return render_template("results.html", test_result = Test_Result.most_recent_score_for_logged_in_user({"id": session["id"]})[0]
-    )
+    return render_template("results.html", test_result = Test_Result.most_recent_score_for_logged_in_user({"id": session["id"]})[0], test_results = Test_Result.get_scores_for_logged_in_user({"id": session["id"]}))

@@ -9,10 +9,26 @@
     <title>Edit Tip</title>
 </head>
 <body>
-    {% extends "flash_set_up.html" %}
-    {% block body %}
-    <div>
-        <h1>Edit Tip</h1>
+
+    <div data-sticky-container>
+        <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
+            <div class="top-bar topbar-sticky-shrink">
+                <div class="top-bar-title">
+                    <h1>US Citizenship Test Study Center</h1>
+                </div>
+                <div class="top-bar-right">
+                    <ul class="menu">
+                        <li><a href="/advice_center">Advice Center</a></li>
+                        <li><a href="/question/0">Take a test</a></li>
+                        <li><a href="/logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="callout">
+        <h3>Edit Tip</h3>
         <form action="/advice/{{tip.id}}/edit" method="POST">
             <input type="hidden" name="id" value="{{ tip.id }}">
             <div>
@@ -20,14 +36,12 @@
                 <input type="text" name="tip" value="{{ tip.tip }}">
             </div>
             
-            <button type="submit">Update your advice</button>
+            <button type="submit" class="button">Update your advice</button>
         </form> 
 
-        <div class="home">
-            <a href="/advice_center">back to Advice Center</a>  |  <a href="/logout">logout</a>
         </div>
     </div>
-    {% endblock %}
+
 </body>
 </html>
 

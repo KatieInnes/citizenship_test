@@ -5,6 +5,8 @@ from flask_app.models.test_result import Test_Result
 
 @app.route('/question/<int:page_id>')
 def question(page_id):
+    # if not QuestionAnswer.selection_required(request.form)
+
     if "id" not in session:
         return redirect('/logout/')
 

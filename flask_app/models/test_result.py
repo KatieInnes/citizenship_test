@@ -25,6 +25,7 @@ class Test_Result:
             SELECT * FROM 
                 test_results
             WHERE user_id = %(id)s
+            ORDER BY test_date DESC
         """
         result = connectToMySQL(cls.DB).query_db(query, data)
         return result

@@ -9,8 +9,6 @@
     <title>US Citizenship Test Study Center</title>
 </head>
 <body>
-    {# <header id="header" class="topbar-sticky-shrink-header"></header> #}
-
     <div data-sticky-container>
         <div data-sticky data-margin-top='0' data-top-anchor="header:bottom" data-btm-anchor="content:bottom">
             <div class="top-bar topbar-sticky-shrink">
@@ -31,8 +29,8 @@
 
     {% extends "flash_set_up.html" %}
     {% block body %}
-    <div class="row">
-        <div class="column-left">
+    <div class="grid-x grid-padding-x grid-padding-y">
+        <div class="small-6 cell">
             <h2>Register</h2>
             <form action="/registration" method="POST">
                 <div>
@@ -58,7 +56,7 @@
         </div>
     
 
-        <div class="column-right">
+        <div class="small-6 cell">
             <h2>Login</h2>
             <form action="/login" method="POST">
                 <div>

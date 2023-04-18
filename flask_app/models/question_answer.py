@@ -11,6 +11,17 @@ class QuestionAnswer:
         self.answer4 = data['answer4']
         self.correct_answer = data['correct_answer']
 
+    # @staticmethod
+    # def selection_required(question):
+    #     is_valid = True
+
+    #     # if no radio buttons selected, disallow submit
+
+
+
+    #     return is_valid
+
+
     @classmethod
     def get_ten_questions(cls):
         query = """
@@ -20,3 +31,5 @@ class QuestionAnswer:
         """
         ten_questions = connectToMySQL(cls.DB).query_db(query)
         return ten_questions
+
+        

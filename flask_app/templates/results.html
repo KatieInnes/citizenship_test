@@ -19,7 +19,7 @@
                 <div class="top-bar-right">
                     <ul class="menu">
                         <li></li>
-                        <li></li>
+                        <li><a href="/advice_center">Advice Center</a></li>
                         <li><a href="/logout">Logout</a></li>
                     </ul>
                 </div>
@@ -32,14 +32,62 @@
         <div class="callout">
             {{"You passed the test!" if test_result.score >= 6 else "Try again!"}}<br>
             Your correctly answered {{test_result.score}} questions out of 10.
+            <br>
+            <br>
+            <a class="button" href="/question/0">Take another test</a>
             <hr>
-            <a href="/question/0">Take another test</a><br>
-            <a href="/advice/new">Leave advice for other test-takers.</a>
+            <br>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Your Previous Test Scores</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for result in test_results %}
+                    <tr>
+                        <td>{{ result.score }} / 10</td>
+                        <td>{{ result.test_date.strftime('%B %d, %Y') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
         </div>
         
-        
-    </div>
 
 
+        <div class="sticky-footer-css">
+            <div class="row expanded flex-dir-column">
+              <div class="columns shrink header text-center">
+                <p>Header</p>
+                <ul class="menu align-center">
+                  <li><a href="">Link</a></li>
+                  <li><a href="">Link</a></li>
+                  <li><a href="">Link</a></li>
+                </ul>
+              </div>
+              <div class="columns sticky-footer-css-body text-center">
+                <p>Body Content</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse beatae aspernatur tempore similique enim, doloribus et ullam quam itaque sit! Molestias, perspiciatis omnis illo aliquam dignissimos laborum iste? Autem, esse?</p>
+               
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse beatae aspernatur tempore similique enim, doloribus et ullam quam itaque sit! Molestias, perspiciatis omnis illo aliquam dignissimos laborum iste? Autem, esse?</p>
+              </div>
+              <div class="columns shrink footer text-center">
+                <p>Footer</p>
+                <ul class="menu align-center">
+                  <li><a href="">Link</a></li>
+                  <li><a href="">Link</a></li>
+                  <li><a href="">Link</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          
+
+      
+      
 </body>
 </html>

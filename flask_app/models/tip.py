@@ -14,7 +14,7 @@ class Tip:
         is_valid = True
 
         if len(tip['tip']) < 5:
-            flash("Advice must be at least 5 characters.")
+            flash("Tip must be at least 5 characters.")
             is_valid = False
 
         return is_valid

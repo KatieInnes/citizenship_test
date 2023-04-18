@@ -27,6 +27,8 @@
         </div>
     </div>
 
+    {% extends "flash_set_up.html" %}
+    {% block body %}
     <div class="callout">
         <h3>Edit Tip</h3>
         <form action="/advice/{{tip.id}}/edit" method="POST">
@@ -35,13 +37,10 @@
                 <label for="tip">Tip:</label>
                 <input type="text" name="tip" value="{{ tip.tip }}">
             </div>
-            
             <button type="submit" class="button">Update your advice</button>
         </form> 
-
-        </div>
     </div>
-
+    {% endblock %}
 </body>
 </html>
 

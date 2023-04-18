@@ -5,7 +5,7 @@ from flask_app.models.test_result import Test_Result
 
 @app.route('/question/<int:page_id>')
 def question(page_id):
-    # if not QuestionAnswer.selection_required(request.form)
+
 
     if "id" not in session:
         return redirect('/logout/')
@@ -13,6 +13,9 @@ def question(page_id):
     if page_id == 0:
         session['answers'] = [];
         session['questions'] = QuestionAnswer.get_ten_questions();
+
+    if "questions" not in session:
+        return redirect('/question/0')
 
     my_questions = session['questions']
     answer_array = session['answers']
@@ -22,6 +25,9 @@ def question(page_id):
 
 @app.route('/question/<int:page_id>', methods=["POST"])
 def answer_question(page_id):
+
+    if "answer" not in request.form:
+        return redirect('/question/' + str(page_id))
 
     answer_array = session['answers']
     if request.form["answer"] == "true":
@@ -40,3 +46,7 @@ def answer_question(page_id):
     else:
         next_page = int(page_id) + 1
         return redirect('/question/' + str(next_page))
+
+
+
+

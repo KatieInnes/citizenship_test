@@ -26,15 +26,18 @@
         </div>
     </div>
     
-
-    <form action="/advice/new" method="POST">
-        <div class="callout">
-            <label for="tip">Tip:</label>
-            <input type="text" name="tip">
+    {% extends "flash_set_up.html" %}
+    {% block body %}
+    <div class="callout">
+        <h3>Add Tip</h3>
+        <form action="/advice/new" method="POST">
+            <div>
+                <label for="tip">Tip:</label>
+                <input type="text" name="tip">
+            </div>
             <button type="submit" class="button">Submit</button>
-        </div>
-        
-    </form> 
-
+        </form> 
+    </div>
+    {% endblock %}
 </body>
 </html>
